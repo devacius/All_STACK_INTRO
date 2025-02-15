@@ -54,7 +54,7 @@ export default function Home() {
         </div>
         <div className="my-12 rounded h-auto w-full border-2">
           <p className="text-2xl font-bold text-center">About Me</p>
-          <p className="px-2 font-sans"> Hello Guys, So I am a fullstack Developer Intern at ****  ( don't want you guys to come and find me ) 😅, living in Hyderabad right now. I am into Problem Solving, Gaming, Boxing, MMA , building something different, going for hiking and trips to mountain. Pheew... that's a lot of topics for you to hangout with me . Let's play games and build some cool stuff !!! </p>
+          <p className="px-2 font-sans"> Hello Guys, So I am a fullstack Developer Intern at Techolution (Soon to be ALL_STACK DEVELOPER), living in Hyderabad right now. I am into Problem Solving, Gaming, Boxing, MMA , building something different, going for hiking and trips to mountain. Pheew... that's a lot of topics for you to hangout with me . Let's play games and build some cool stuff !!! </p>
         </div>
         <div className="my-2">
           <div className="mb-2 text-center">
