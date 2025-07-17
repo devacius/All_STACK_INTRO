@@ -1,5 +1,6 @@
 import { CardCom } from "@/components/CardCom";
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { animate } from 'animejs';
 import {
   Carousel,
   CarouselContent,
@@ -12,8 +13,8 @@ import { useTheme } from '../components/theme-provider';
 
 export default function Home() {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768);
-  const{theme}=useTheme();
- const[value,setValue]=useState('bg-slate-200');
+  const { theme } = useTheme();
+  const [value, setValue] = useState('bg-slate-200');
   useEffect(() => {
     const handleResize = () => {
       setIsLargeScreen(window.innerWidth > 768);
@@ -28,24 +29,50 @@ export default function Home() {
 
   }, []);
   useEffect(() => {
-    function themeChange(){
-    if(theme==="dark"){
-      setValue('bg-gray-400');
+    animate('.hello ', {
+      y: [
+        { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+        { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+      ],
+      // Property specific parameters
+      rotate: ['-1turn', '0turn'],
+      delay: (_, i) => i * 50, // Function based value
+      ease: 'inOutCirc',
+      loopDelay: 1000,
+      loop: true
+
+    });
+  }, []);
+  useEffect(() => {
+    function themeChange() {
+      if (theme === "dark") {
+        setValue('bg-gray-400');
+      }
+      else {
+        setValue('bg-slate-200');
+      }
     }
-    else{
-      setValue('bg-slate-200');
-    }
-  }
-  themeChange();
-  
-  },[theme]);
+    themeChange();
+
+
+  }, [theme]);
 
   return (
     <div className='min-h-screen min-w-full flex flex-col justify-between '>
       <div className='flex flex-col  m-2 py-14 lg: my-4 justify-center items-center '>
         <div className={`py-4  md: p-2 rounded-lg w-full text-center ${value}`}>
           <div className='space-y-2 flex flex-col text-left'>
-            <p className='text-5xl justify-between md:text-6xl font-sans font-bold my-4'>Oh!! hello there,</p>
+            <h1
+              className="text-5xl justify-between md:text-6xl font-sans font-bold my-4 grid grid-flow-col gap-0"
+              id="hello-anim"
+            >
+              {"Oh!! hello there,".split("").map((char, i) => (
+                <span key={i} className="inline-block hello">
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </h1>
+
             <div className="flex flex-col text-center justify-center md:flex-row space-y-4 md:space-x-5 items-center">
               <p className="text-3xl md:text-4xl font-sans"> Myself </p>
               <p className='font-semibold text-5xl'>Deepansh Gupta.</p>
