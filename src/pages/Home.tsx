@@ -58,37 +58,22 @@ export default function Home() {
   }, [theme]);
 
   return (
-    <div className='min-h-screen min-w-full flex flex-col justify-between '>
-      <div className='flex flex-col  m-2 py-14 lg: my-4 justify-center items-center '>
-        <div className={`py-4  md: p-2 rounded-lg w-full text-center ${value}`}>
-          <div className='space-y-2 flex flex-col text-left'>
-            <h1
-              className="text-5xl justify-between md:text-6xl font-sans font-bold my-4 grid grid-flow-col gap-0"
-              id="hello-anim"
-            >
-              {"Oh!! hello there,".split("").map((char, i) => (
-                <span key={i} className="inline-block hello">
-                  {char === " " ? "\u00A0" : char}
-                </span>
-              ))}
-            </h1>
-
-            <div className="flex flex-col text-center justify-center md:flex-row space-y-4 md:space-x-5 items-center">
-              <p className="text-3xl md:text-4xl font-sans"> Myself </p>
-              <p className='font-semibold text-5xl'>Deepansh Gupta.</p>
-            </div>
-          </div>
-        </div>
-        <div className="my-12 rounded h-auto w-full border-2">
-          <p className="text-2xl font-bold text-center">About Me</p>
-          <p className="px-2 font-sans"> Hello Guys, So I am a fullstack Developer Intern at Techolution (Soon to be ALL_STACK DEVELOPER), living in Hyderabad right now. I am into Problem Solving, Gaming, Boxing, MMA , building something different, going for hiking and trips to mountain. Pheew... that's a lot of topics for you to hangout with me . Let's play games and build some cool stuff !!! </p>
+    <div className='min-h-screen min-w-full flex flex-col justify-center items-center  '>
+      <div className='flex flex-col  m-2 py-14 lg: my-4 justify-center items-start w-1/3'>
+        <span className="font-mono text-5xl">Deepansh Gupta</span>
+        <div className="flex flex-col my-12 rounded h-auto w-full gap-y-5">
+          <p className="px-2 "> Hey !! I'm Deepansh Gupta , a fanatical Full Stack Developer and Software Engineer. </p>
+          <p>Dreaming up cool ideas and making them come true is where my passion lies. I am enthusiastic about building tools that help myself and others to be more productive and enjoy the process of crafting. You can find my full projects list here.</p>
+          {/* <p>I give talks and write blog posts about open source, coding, etc. Occasionally, I do live coding streams on YouTube and 哔哩哔哩. I am also co-hosting a podcast No Coding Today (in Mandarin), talking about various topics around programming. From time to time, I make some generative-art, interactivity experiments on 100.antfu.me.</p> */}
+          <p>Outside of programming, I enjoy eating good food and going for bike rides. I post photos on this page. I also love anime, movies and dramas, I am trying to list my media consumption. Also, in case you are interested, here are the hardware/software I use.</p>
+          <p>I recently moved to दिल्ली Delhi(India), if you are around, please reach out and let’s have some coffee or work together.</p>
         </div>
         <div className="my-2">
-          <div className="mb-2 text-center">
+          {/* <div className="mb-2 text-center">
             <p className="text-xl underline decoration-red-600">Featured Projects</p>
-          </div>
+          </div> */}
 
-          <div className="flex flex-row space-x-2">
+          {/* <div className="flex flex-row space-x-2">
             {
               isLargeScreen ? (
                 <>
@@ -114,7 +99,7 @@ export default function Home() {
 
                 </>)
             }
-          </div>
+          </div> */}
 
 
         </div>

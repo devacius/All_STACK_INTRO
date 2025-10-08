@@ -15,7 +15,12 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+     
     },
+     fontFamily: {
+    sans: ['"Fira Code"', 'monospace'],
+    mono: ['"JetBrains Mono"', 'monospace'],
+  },
     extend: {
       colors: {
         border: "hsl(var(--border))",
