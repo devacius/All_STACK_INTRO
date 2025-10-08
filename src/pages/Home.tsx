@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel"
 import { useEffect, useState } from "react";
 import { useTheme } from '../components/theme-provider';
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768);
@@ -56,16 +57,16 @@ export default function Home() {
 
 
   }, [theme]);
-
+const navigate=useNavigate();
   return (
     <div className='min-h-screen min-w-full flex flex-col justify-center items-center  '>
       <div className='flex flex-col  m-2 py-14 lg: my-4 justify-center items-start w-1/3'>
         <span className="font-mono text-5xl">Deepansh Gupta</span>
         <div className="flex flex-col my-12 rounded h-auto w-full gap-y-5">
           <p className="px-2 "> Hey !! I'm Deepansh Gupta , a fanatical Full Stack Developer and Software Engineer. </p>
-          <p>Dreaming up cool ideas and making them come true is where my passion lies. I am enthusiastic about building tools that help myself and others to be more productive and enjoy the process of crafting. You can find my full projects list here.</p>
+          <p>Dreaming up cool ideas and making them come true is where my passion lies. I am enthusiastic about building tools that help myself and others to be more productive and enjoy the process of crafting. You can find my <span className="underline cursor-pointer" onClick={()=>navigate('/projects')}>full projects list here.</span></p>
           {/* <p>I give talks and write blog posts about open source, coding, etc. Occasionally, I do live coding streams on YouTube and 哔哩哔哩. I am also co-hosting a podcast No Coding Today (in Mandarin), talking about various topics around programming. From time to time, I make some generative-art, interactivity experiments on 100.antfu.me.</p> */}
-          <p>Outside of programming, I enjoy eating good food and going for bike rides. I post photos on this page. I also love anime, movies and dramas, I am trying to list my media consumption. Also, in case you are interested, here are the hardware/software I use.</p>
+          <p>Outside of programming, I enjoy eating good food and going for bike rides. I post photos on this <span className="font-bold cursor-pointer" onClick={()=>navigate('/photos')}>page</span>. I also love anime, movies and dramas, I am trying to list my media consumption. Also, in case you are interested, here are the <span className="font-bold cursor-pointer" onClick={()=>navigate('/use')}>hardware/software</span> I use.</p>
           <p>I recently moved to दिल्ली Delhi(India), if you are around, please reach out and let’s have some coffee or work together.</p>
         </div>
         <div className="my-2">

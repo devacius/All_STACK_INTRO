@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 const Home = lazy(() => import("./pages/Home"));
 const Project = lazy(() => import('./pages/Projects'));
 const Hireme = lazy(() => import('./pages/Hireme'));
+const NoPage=lazy(()=> import('./pages/NoPage'));
 import { ThemeProvider } from './components/theme-provider';
 import { Skeleton } from "@/components/ui/skeleton"
 import {
@@ -51,6 +52,8 @@ export default function App() {
             <Route path="/" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Home /> </Suspense>} />
             <Route path="/projects" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Project /> </Suspense>} />
             <Route path="/hire" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Hireme  /> </Suspense>} />
+            <Route path="/photos" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><NoPage  /> </Suspense>} />
+            <Route path="/use" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><NoPage  /> </Suspense>} />
           </Routes>
         </BrowserRouter>
       </div>
