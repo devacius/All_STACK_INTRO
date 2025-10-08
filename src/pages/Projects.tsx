@@ -28,7 +28,7 @@ export default function Projects() {
       <div className='px-2 mt-10 pb-8 '><p className='text-sm'><b>Note:</b> The projects with green deploy border are deployed . While the ones with Red ones are not </p></div>
       <div className='pt-28' >
         <div className='pb-4'>
-          <p className='text-2xl px-2 font-bold rounded-lg w-80 py-2 mx-4' style={{ backgroundColor: '#14B8A6' }}>Web Development</p>
+          <p className='text-2xl px-2 font-bold rounded-lg w-80 py-2 mx-4 font-mono' style={{ backgroundColor: '#14B8A6' }}>Web Development</p>
 
           <div className='flex flex-col justify-between  pt-4 md: items-center max-h-11/12 h-3/5  space-y-2 '>
             
@@ -57,7 +57,7 @@ export default function Projects() {
         </div>
 
         <div className='pb-4'>
-          <p className='text-2xl px-2 font-bold rounded-lg py-2 w-80 mx-4 ' style={{ backgroundColor: '#14B8A6' }}>Blockchain</p>
+          <p className='text-2xl px-2 font-bold rounded-lg py-2 w-80 mx-4 font-mono' style={{ backgroundColor: '#14B8A6' }}>Blockchain</p>
 
           <div className='flex flex-col pt-4  md:flex-row items-center max-h-11/12 h-3/5 w-full  px-4 space-x-8 space-y-2 '>
             {
@@ -79,7 +79,7 @@ export default function Projects() {
           </div>
         </div>
         <div className='pb-4'>
-          <p className='text-2xl px-2 font-bold rounded-lg py-2 w-80 mx-4 ' style={{ backgroundColor: '#14B8A6' }}>App Development</p>
+          <p className='text-2xl px-2 font-bold rounded-lg py-2 w-80 mx-4 font-mono ' style={{ backgroundColor: '#14B8A6' }}>App Development</p>
 
           <div className='flex flex-col pt-4  md:flex-row items-center max-h-11/12 h-3/5 w-full  px-4 space-x-8 space-y-2 '>
             {

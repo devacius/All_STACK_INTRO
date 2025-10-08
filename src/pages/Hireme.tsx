@@ -1,5 +1,5 @@
 
-import pdf from "../Deepansh_Gupta__Full_Stack_2.pdf";
+import pdf from "../../Deepansh_Gupta__Full_Stack_ (8).pdf";
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 
