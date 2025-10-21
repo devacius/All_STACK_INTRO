@@ -50,6 +50,7 @@ export default function Projects() {
                 )}
               >
                 <CarouselContent>
+                  {/* @ts-ignore */}
                   {items.map((project:any) => (
                     <CarouselItem key={project.id} className="w-fit md:basis-1/4">
                       <CardCom
