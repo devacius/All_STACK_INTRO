@@ -28,13 +28,14 @@ export default function Projects() {
     }, {});
   }, [projects]);
 
-  return (isLoading ?
-    <div className="flex items-center gap-2">
+  return (
+      <div className="flex flex-col justify-between max-h-screen max-w-full pt-20">
+       { isLoading ?
+    <div className="flex justify-center items-center gap-2">
       <div className="animate-spin h-5 w-5 border-2 border-green-500 border-t-transparent rounded-full"></div>
       <p>Loading Projects...</p>
     </div> :
 
-    <div className="flex flex-col justify-between max-h-screen max-w-full pt-20">
 
       <div className="pt-28 space-y-10">
         {Object.entries(groupedProjects).map(([category, items]): any => (
@@ -74,7 +75,7 @@ export default function Projects() {
             </div>
           </div>
         ))}
-      </div>
+      </div>}
     </div>
 
   );
