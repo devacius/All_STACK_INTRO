@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import axios from "axios";
 import { config } from "@/config/config";
+import { useQuery } from "@tanstack/react-query";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -20,13 +21,48 @@ export async function getProjects(){
   
   return projects;
 }
+export async function getBlogs(){
+  const response = await axios.get(`${config.BLOG_BACKEND_URL}/articles`);
+  
+  // Map API response to clean blog objects
+  const blogs = response.data.map((b:any) => ({
+    id: b.id,
+    title: b.title,
+    
+  }));
+  
+  return blogs;
+}
+export async function getBlog(articleId: string) {
+  const response = await axios.get(`${config.BLOG_BACKEND_URL}/article/${articleId}`);
+  const b = response.data;
+  return {
+    id: b.id,
+    title: b.title,
+    content: b.content,
+  };
+}
 
-import { useQuery } from "@tanstack/react-query";
 
 export function useProjects() {
   return useQuery({
     queryKey: ["projects"],
     queryFn: getProjects,
+    refetchOnWindowFocus:true,
+  });
+}
+export function useBlogs() {
+  return useQuery({
+    queryKey: ["blogs"],
+    queryFn: getBlogs,
+    refetchOnWindowFocus:true,
+  });
+}
+export function useBlog(articleId:string) {
+  return useQuery({
+    queryKey: ["blog", articleId],
+    queryFn: () => getBlog(articleId),
+     enabled: !!articleId, // only run if articleId exists
     refetchOnWindowFocus:true,
   });
 }

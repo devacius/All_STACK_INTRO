@@ -7,7 +7,8 @@ import { cn, useProjects } from '@/lib/utils';
 export default function Projects() {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768);
   const { theme } = useTheme();
-  const { data: projects } = useProjects();
+  const { data: projects, isLoading } = useProjects();
+  console.log("isloading",isLoading);
   console.log("Fetched projects:", projects);
   useEffect(() => {
     const handleResize = () => setIsLargeScreen(window.innerWidth > 768);
@@ -19,7 +20,7 @@ export default function Projects() {
   const groupedProjects = useMemo(() => {
     if (!projects) return {};
     return projects.reduce((acc: Record<string, any[]>, project: any) => {
-      const category = project.category ;
+      const category = project.category;
       console.log("Category:", category);
       if (!acc[category]) acc[category] = [];
       acc[category].push(project);
@@ -27,11 +28,16 @@ export default function Projects() {
     }, {});
   }, [projects]);
 
-  return (
+  return (isLoading ?
+    <div className="flex items-center gap-2">
+      <div className="animate-spin h-5 w-5 border-2 border-green-500 border-t-transparent rounded-full"></div>
+      <p>Loading Projects...</p>
+    </div> :
+
     <div className="flex flex-col justify-between max-h-screen max-w-full pt-20">
 
       <div className="pt-28 space-y-10">
-        {Object.entries(groupedProjects).map(([category, items]):any => (
+        {Object.entries(groupedProjects).map(([category, items]): any => (
           <div key={category}>
             {/* ✅ Category Heading */}
             <p
@@ -51,7 +57,7 @@ export default function Projects() {
               >
                 <CarouselContent>
                   {/* @ts-ignore */}
-                  {items.map((project:any) => (
+                  {items.map((project: any) => (
                     <CarouselItem key={project.id} className="w-fit md:basis-1/4">
                       <CardCom
                         title={project.title}
@@ -70,5 +76,6 @@ export default function Projects() {
         ))}
       </div>
     </div>
+
   );
 }

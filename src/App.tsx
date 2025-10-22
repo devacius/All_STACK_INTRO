@@ -5,6 +5,9 @@ const Home = lazy(() => import("./pages/Home"));
 const Project = lazy(() => import('./pages/Projects'));
 const Hireme = lazy(() => import('./pages/Hireme'));
 const NoPage=lazy(()=> import('./pages/NoPage'));
+const Blogs=lazy(()=> import('./pages/Blogs'));
+const Blog=lazy(()=> import('./pages/Blog'));
+
 import { ThemeProvider } from './components/theme-provider';
 import { Skeleton } from "@/components/ui/skeleton"
 import {
@@ -54,6 +57,9 @@ export default function App() {
             <Route path="/hire" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Hireme  /> </Suspense>} />
             <Route path="/photos" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><NoPage  /> </Suspense>} />
             <Route path="/use" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><NoPage  /> </Suspense>} />
+            <Route path="/blogs" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Blogs  /> </Suspense>} />
+            <Route path="/blog/:id" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Blog  /> </Suspense>} />
+
           </Routes>
         </BrowserRouter>
       </div>
@@ -86,9 +92,9 @@ function Appbar({ isMobile }: { isMobile: boolean }) {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem >
-                <Link to="/hire">
+                <Link to="/blogs">
                   <NavigationMenuLink className={navigationMenuTriggerStyle()} style={theme === 'dark' ? { backgroundColor: '#31363F' } : { backgroundColor: '#EEEEEE' }}>
-                    About
+                    Blogs
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
