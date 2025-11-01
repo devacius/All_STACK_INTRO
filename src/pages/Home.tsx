@@ -1,5 +1,5 @@
 import { CardCom } from "@/components/CardCom";
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaMedium, FaTwitter } from 'react-icons/fa';
 import { animate } from 'animejs';
 import {
   Carousel,
@@ -110,6 +110,7 @@ const navigate=useNavigate();
             <a href="https://github.com/devacius" ><FaGithub className='h-8 w-8 md:h-12 md:w-12' /></a>
             <a href="https://www.linkedin.com/in/deepansh-gupta-1227591b9/"><FaLinkedin className='h-8 w-8 md:h-12 md:w-12' /></a>
             <a href="https://twitter.com/devacius"><FaTwitter className='h-8 w-8 md:h-12 md:w-12' /></a>
+            <a href="https://medium.com/@devaciusaboveall789456"><FaMedium className="h-8 w-8 md:h-12 md:w-12"/></a>
           </div>
         </div>
       </div>
