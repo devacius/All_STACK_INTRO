@@ -33,6 +33,8 @@ import { Moon, Sun } from "lucide-react";
 
 import { useTheme } from './components/theme-provider';
 import { Button } from "@/components/ui/button";
+import { Games } from './pages/Games';
+import Tetris from './games/tetris/Tetris';
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -59,6 +61,8 @@ export default function App() {
             <Route path="/use" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><NoPage  /> </Suspense>} />
             <Route path="/blogs" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Blogs  /> </Suspense>} />
             <Route path="/blog/:id" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Blog  /> </Suspense>} />
+            <Route path="/games" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Games/> </Suspense>} />
+            <Route path="/tetris" element={<Suspense fallback={<Skeleton className="h-[125px] w-[250px] rounded-xl" />}><Tetris  /> </Suspense>} />
 
           </Routes>
         </BrowserRouter>
