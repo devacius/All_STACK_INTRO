@@ -77,7 +77,7 @@ function Appbar({ isMobile }: { isMobile: boolean }) {
   if (!isMobile) {
     return (
       <div className='flex absolute top-0 min-w-full h-20 md:h-16' style={{ backgroundColor: '#14B8A6' }}>
-        <div className='ml-auto md:w-1/3 flex justify-end' >
+        <div className='ml-auto md:w-1/3 flex justify-end ' >
           <NavigationMenu>
             <NavigationMenuList className='px-4'>
               <NavigationMenuItem >
@@ -92,6 +92,13 @@ function Appbar({ isMobile }: { isMobile: boolean }) {
                 <Link to="/projects">
                   <NavigationMenuLink className={navigationMenuTriggerStyle()} style={theme === 'dark' ? { backgroundColor: '#31363F' } : { backgroundColor: '#EEEEEE' }}>
                     Projects
+                  </NavigationMenuLink>
+                </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem >
+                 <Link to="/games">
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} style={theme === 'dark' ? { backgroundColor: '#31363F' } : { backgroundColor: '#EEEEEE' }}>
+                    Games
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
