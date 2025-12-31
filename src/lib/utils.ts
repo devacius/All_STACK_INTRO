@@ -9,6 +9,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 export async function getProjects(){
   const response = await axios.get(`${config.BACKEND_URL}/projects/getall`,{
+    withCredentials:false,
     headers: {
     'ngrok-skip-browser-warning': 'true',
   }
@@ -27,6 +28,7 @@ export async function getProjects(){
 }
 export async function getBlogs(){
   const response = await axios.get(`${config.BLOG_BACKEND_URL}/articles`,{
+    withCredentials:false,
     headers: {
     'ngrok-skip-browser-warning': 'true',
   }
@@ -43,6 +45,7 @@ export async function getBlogs(){
 }
 export async function getBlog(articleId: string) {
   const response = await axios.get(`${config.BLOG_BACKEND_URL}/article/${articleId}`,{
+    withCredentials:false,
     headers: {
     'ngrok-skip-browser-warning': 'true',
   }
