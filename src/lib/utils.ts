@@ -8,7 +8,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 export async function getProjects(){
-  const response = await axios.get(`${config.BACKEND_URL}/projects/getall`);
+  const response = await axios.get(`${config.BACKEND_URL}/projects/getall`,{
+    headers: {
+    'ngrok-skip-browser-warning': 'true',
+  }
+  });
   
   // Map API response to clean project objects
   const projects = response.data.map((p:any) => ({
@@ -22,7 +26,11 @@ export async function getProjects(){
   return projects;
 }
 export async function getBlogs(){
-  const response = await axios.get(`${config.BLOG_BACKEND_URL}/articles`);
+  const response = await axios.get(`${config.BLOG_BACKEND_URL}/articles`,{
+    headers: {
+    'ngrok-skip-browser-warning': 'true',
+  }
+  });
   
   // Map API response to clean blog objects
   const blogs = response.data.map((b:any) => ({
@@ -34,7 +42,11 @@ export async function getBlogs(){
   return blogs;
 }
 export async function getBlog(articleId: string) {
-  const response = await axios.get(`${config.BLOG_BACKEND_URL}/article/${articleId}`);
+  const response = await axios.get(`${config.BLOG_BACKEND_URL}/article/${articleId}`,{
+    headers: {
+    'ngrok-skip-browser-warning': 'true',
+  }
+  });
   const b = response.data;
   return {
     id: b.id,
