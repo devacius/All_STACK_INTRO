@@ -8,12 +8,15 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 export async function getProjects(){
-  const response = await axios.get(`${config.BACKEND_URL}/projects/getall`,{
-    withCredentials:false,
+  const response = await axios.get(`${config.BACKEND_URL}/backend/projects/getall`
+    ,{
+    // withCredentials:false,
     headers: {
+      'Content-Type': 'application/json',
     'ngrok-skip-browser-warning': 'true',
   }
-  });
+  }
+);
   
   // Map API response to clean project objects
   const projects = response.data.map((p:any) => ({
@@ -27,7 +30,7 @@ export async function getProjects(){
   return projects;
 }
 export async function getBlogs(){
-  const response = await axios.get(`${config.BLOG_BACKEND_URL}/articles`,{
+  const response = await axios.get(`${config.BLOG_BACKEND_URL}/blog/articles`,{
     withCredentials:false,
     headers: {
     'ngrok-skip-browser-warning': 'true',
@@ -44,7 +47,7 @@ export async function getBlogs(){
   return blogs;
 }
 export async function getBlog(articleId: string) {
-  const response = await axios.get(`${config.BLOG_BACKEND_URL}/article/${articleId}`,{
+  const response = await axios.get(`${config.BLOG_BACKEND_URL}/blog/article/${articleId}`,{
     withCredentials:false,
     headers: {
     'ngrok-skip-browser-warning': 'true',
