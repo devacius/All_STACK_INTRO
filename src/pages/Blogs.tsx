@@ -13,7 +13,7 @@ const Blogs: React.FC = () => {
     const { data:blogs, isLoading } = useBlogs();
 
     return (
-        <div className="min-h-screen bg-black text-green-500 p-8 font-mono">
+        <div className="min-h-screen flex justify-center items-center bg-black text-green-500 p-8 font-mono">
             <div className="max-w-6xl mx-auto">
                 <div className="border border-green-500 p-4 rounded">
                     <div className="flex gap-2 mb-4">
