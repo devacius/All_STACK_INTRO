@@ -49,7 +49,7 @@ export default function App() {
     return () => window.removeEventListener('resize', handleResize); // Cleanup
   }, []);
   return (
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className=' min-w-full  min-h-screen'>
         <BrowserRouter>
           <Appbar isMobile={isMobile} />
