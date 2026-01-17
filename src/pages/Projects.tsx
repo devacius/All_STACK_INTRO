@@ -29,7 +29,7 @@ export default function Projects() {
   }, [projects]);
 
   return (
-    <div className="flex flex-col justify-between max-h-screen max-w-full pt-20">
+    <div className="flex flex-col justify-between max-h-screen max-w-full pt-16">
       {isLoading ?
         <div className="flex justify-center items-center gap-2">
           <div className="animate-spin h-5 w-5 border-2 border-green-500 border-t-transparent rounded-full"></div>
@@ -39,7 +39,7 @@ export default function Projects() {
 
         <div className=" space-y-12">
           {Object.entries(groupedProjects).map(([category, items]): any => (
-            <div key={category} className="border-t border-border border-dashed  mx-4">
+            <div key={category} className="border-t border-border border-dashed pt-4 mx-4">
               {/* ✅ Category Heading */}
               <h3
                 className="text-2xl font-bold font-mono text-green-500 mb-6 pl-2 border-l-4 border-green-500"
