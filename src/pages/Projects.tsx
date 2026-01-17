@@ -37,9 +37,9 @@ export default function Projects() {
         </div> :
 
 
-        <div className="pt-28 space-y-12">
+        <div className=" space-y-12">
           {Object.entries(groupedProjects).map(([category, items]): any => (
-            <div key={category} className="border-t border-border border-dashed pt-8 mx-4">
+            <div key={category} className="border-t border-border border-dashed  mx-4">
               {/* ✅ Category Heading */}
               <h3
                 className="text-2xl font-bold font-mono text-green-500 mb-6 pl-2 border-l-4 border-green-500"
