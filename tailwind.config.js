@@ -15,13 +15,12 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
-     
     },
-     fontFamily: {
-    sans: ['"Fira Code"', 'monospace'],
-    mono: ['"JetBrains Mono"', 'monospace'],
-  },
     extend: {
+      fontFamily: {
+        sans: ['"JetBrains Mono"', '"Fira Code"', 'monospace'], // Defaulting sans to mono for this theme
+        mono: ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
