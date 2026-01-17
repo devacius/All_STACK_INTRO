@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 
-type Theme = "dark" | "light" | "system"
+type Theme = "dark" | "light" | "system" | "real-light"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -33,7 +33,7 @@ export function ThemeProvider({
   useEffect(() => {
     const root = window.document.documentElement
 
-    root.classList.remove("light", "dark")
+    root.classList.remove("light", "dark", "real-light")
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
@@ -42,7 +42,12 @@ export function ThemeProvider({
         : "light"
 
       root.classList.add(systemTheme)
-     
+      return
+    }
+
+    if (theme === 'real-light') {
+      root.classList.add('dark') // Use dark theme underlying styles for the "sunglasses" effect
+      root.classList.add('real-light') // Add real-light class for specific overrides if needed
       return
     }
 

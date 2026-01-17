@@ -36,6 +36,14 @@ import { Button } from "@/components/ui/button";
 import { Games } from './pages/Games';
 import Tetris from './games/tetris/Tetris';
 
+import TerminalHero from './components/TerminalHero';
+import RealLightOverlay from './components/RealLightOverlay';
+
+function RealLightManager() {
+  const { theme } = useTheme();
+  return theme === 'real-light' ? <RealLightOverlay /> : null;
+}
+
 export default function App() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -51,6 +59,21 @@ export default function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className=' min-w-full  min-h-screen'>
+        {/* Render RealLightOverlay only when theme is 'real-light'. 
+            We need to access theme from context. But App is *inside* ThemeProvider.
+            Wait, App component uses ThemeProvider. The `useTheme` hook is used in `Appbar`.
+            I can't use `useTheme` inside `App` directly if `App` *is* the one rendering `ThemeProvider`.
+            
+            Solution: Create a wrapper or separate component that handles the conditional rendering 
+            OR move the ThemeProvider up a level in main.tsx. 
+            
+            Checking main.tsx... I don't see main.tsx content.
+            Looking at App.tsx, `App` renders `ThemeProvider`.
+            So internal components (like routes, appbar) can use `useTheme`.
+            
+            I will make `RealLightManager` component that uses `useTheme` and renders `RealLightOverlay`.
+        */}
+        <RealLightManager />
         <BrowserRouter>
           <Appbar isMobile={isMobile} />
           <Routes>
@@ -96,11 +119,29 @@ function Appbar({ isMobile }: { isMobile: boolean }) {
           </Link>
         ))}
 
-        <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="ml-2 hover:bg-transparent hover:text-green-500">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="ml-2 relative hover:bg-transparent hover:text-green-500">
+              <Sun className={`h-[1.2rem] w-[1.2rem] transition-all ${theme === 'light' ? 'rotate-0 scale-100' : 'rotate-90 scale-0'}`} />
+              <Moon className={`absolute h-[1.2rem] w-[1.2rem] transition-all ${theme === 'dark' ? 'rotate-0 scale-100' : 'rotate-90 scale-0'}`} />
+              <span className={`absolute h-[1.2rem] w-[1.2rem] flex items-center justify-center transition-all ${theme === 'real-light' ? 'rotate-0 scale-100' : 'scale-0'}`}>
+                🕶️
+              </span>
+              <span className="sr-only">Toggle theme</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="bg-background border border-border border-dashed rounded-none">
+            <DropdownMenuItem onClick={() => setTheme("light")} className="font-mono cursor-pointer hover:text-green-500">
+              Light Mode
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("dark")} className="font-mono cursor-pointer hover:text-green-500">
+              Dark Mode
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("real-light")} className="font-mono cursor-pointer hover:text-green-500">
+              Real Light Mode
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       {/* Mobile Nav */}
@@ -122,8 +163,12 @@ function Appbar({ isMobile }: { isMobile: boolean }) {
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="font-mono cursor-pointer">
-              Theme: {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            <DropdownMenuItem onClick={() => {
+              if (theme === "dark") setTheme("light");
+              else if (theme === "light") setTheme("real-light");
+              else setTheme("dark");
+            }} className="font-mono cursor-pointer">
+              Theme: {theme === 'dark' ? 'Dark Mode' : theme === 'light' ? 'Light Mode' : 'Real Light Mode'}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
