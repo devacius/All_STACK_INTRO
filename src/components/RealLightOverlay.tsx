@@ -16,15 +16,38 @@ const RealLightOverlay = () => {
         };
     }, []);
 
-    // Width of one lens
-    const lensWidth = 140;
-    const lensHeight = 100;
-    const bridgeWidth = 30;
+    // Fastrack/Sporty Shape Dimensions
+    const lensWidth = 200; // Increased width
+    const lensHeight = 140; // Increased height
+    const bridgeWidth = 20;
 
-    // Calculate positions based on mouse center
-    const leftLensCx = mousePosition.x - (lensWidth / 2) - (bridgeWidth / 2);
-    const rightLensCx = mousePosition.x + (lensWidth / 2) + (bridgeWidth / 2);
-    const lensCy = mousePosition.y;
+    // Custom Path Data for a sporty shape: Flat top, curved bottom-outer, slightly angled inner
+    const getLensPath = (x: number, y: number, width: number, height: number, isRight: boolean) => {
+        // SVG Path for a sporty "D" shape or wrap-around style
+        if (!isRight) {
+            // Left Lens
+            return `M ${x} ${y} 
+                     L ${x + width - 10} ${y} 
+                     Q ${x + width} ${y} ${x + width} ${y + 20} 
+                     L ${x + width - 5} ${y + height - 30} 
+                     Q ${x + width - 10} ${y + height} ${x + width - 40} ${y + height} 
+                     L ${x + 20} ${y + height} 
+                     Q ${x} ${y + height} ${x} ${y + height - 20} 
+                     L ${x} ${y + 20} 
+                     Q ${x} ${y} ${x + 20} ${y} Z`;
+        } else {
+            // Right Lens (Mirrored logic)
+            return `M ${x} ${y} 
+                    L ${x + width - 20} ${y} 
+                    Q ${x + width} ${y} ${x + width} ${y + 20} 
+                    L ${x + width} ${y + height - 20} 
+                    Q ${x + width} ${y + height} ${x + width - 20} ${y + height} 
+                    L ${x + 40} ${y + height} 
+                    Q ${x + 10} ${y + height} ${x + 5} ${y + height - 30} 
+                    L ${x} ${y + 20} 
+                    Q ${x} ${y} ${x + 10} ${y} Z`;
+        }
+    };
 
     return (
         <div style={{
@@ -44,15 +67,18 @@ const RealLightOverlay = () => {
                         <rect x="0" y="0" width="100%" height="100%" fill="white" />
 
                         {/* Black Shapes = Transparent Holes (The lenses) */}
-                        <ellipse cx={leftLensCx} cy={lensCy} rx={lensWidth / 2} ry={lensHeight / 2} fill="black" />
-                        <ellipse cx={rightLensCx} cy={lensCy} rx={lensWidth / 2} ry={lensHeight / 2} fill="black" />
+                        {/* Left Lens */}
+                        <path d={getLensPath(mousePosition.x - lensWidth - (bridgeWidth / 2), mousePosition.y - (lensHeight / 2), lensWidth, lensHeight, false)} fill="black" />
 
-                        {/* Bridge (Optional, makes it look more connected) */}
+                        {/* Right Lens */}
+                        <path d={getLensPath(mousePosition.x + (bridgeWidth / 2), mousePosition.y - (lensHeight / 2), lensWidth, lensHeight, true)} fill="black" />
+
+                        {/* Bridge */}
                         <rect
-                            x={mousePosition.x - (bridgeWidth / 2)}
-                            y={lensCy - 5}
-                            width={bridgeWidth}
-                            height={10}
+                            x={mousePosition.x - (bridgeWidth / 2) - 5}
+                            y={mousePosition.y - (lensHeight / 2) + 10}
+                            width={bridgeWidth + 10}
+                            height={8}
                             fill="black"
                         />
                     </mask>
